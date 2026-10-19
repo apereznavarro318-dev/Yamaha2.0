@@ -1,0 +1,1098 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAMAHA 2.0 | Fiebre 2T y Poder 4T</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        yamahaRed: '#E60012',
+                        yamahaRedDark: '#B3000E',
+                        yamahaBlack: '#0A0A0C',
+                        yamahaDarkGray: '#16161A',
+                        yamahaCard: '#1E1E24',
+                        yamahaSilver: '#C0C0C0',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles & Flip animations */
+        body {
+            background-color: #0A0A0C;
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(230, 0, 18, 0.6);
+        }
+
+        .border-glow {
+            box-shadow: 0 0 15px rgba(230, 0, 18, 0.3);
+        }
+
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Sound visualizer animation */
+        @keyframes soundWave {
+            0%, 100% { height: 8px; }
+            50% { height: 48px; }
+        }
+
+        .bar {
+            animation: soundWave 0.8s infinite ease-in-out;
+        }
+
+        .bar:nth-child(1) { animation-delay: 0.1s; }
+        .bar:nth-child(2) { animation-delay: 0.3s; }
+        .bar:nth-child(3) { animation-delay: 0.5s; }
+        .bar:nth-child(4) { animation-delay: 0.2s; }
+        .bar:nth-child(5) { animation-delay: 0.4s; }
+        .bar:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E60012;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B3000E;
+        }
+    </style>
+</head>
+<body class="selection:bg-yamahaRed selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-yamahaBlack/90 backdrop-blur-md border-b border-yamahaRed/20 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-yamahaRed rounded-full flex items-center justify-center font-black text-xl text-white shadow-lg shadow-yamahaRed/50 group-hover:scale-110 transition-transform">
+                        Y
+                    </div>
+                    <div>
+                        <span class="font-heading font-black text-2xl tracking-wider text-white">YAMAHA <span class="text-yamahaRed">2.0</span></span>
+                        <span class="block text-[10px] text-gray-400 tracking-widest uppercase font-bold">Cultura Biker LATAM</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold tracking-wide">
+                    <a href="#hero" class="hover:text-yamahaRed transition-colors">Inicio</a>
+                    <a href="#dt-series" class="hover:text-yamahaRed transition-colors">Serie DT</a>
+                    <a href="#rx-series" class="hover:text-yamahaRed transition-colors">Fiebre RX</a>
+                    <a href="#xt660r" class="hover:text-yamahaRed transition-colors">XT660R</a>
+                    <a href="#comparator" class="hover:text-yamahaRed transition-colors">Comparador</a>
+                    <a href="#mitos" class="hover:text-yamahaRed transition-colors">Mitos vs Realidad</a>
+                    <a href="#trivia" class="hover:text-yamahaRed transition-colors">Trivia</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:block">
+                    <a href="#comparator" class="bg-yamahaRed hover:bg-yamahaRedDark text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-yamahaRed/30 hover:shadow-yamahaRed/60 hover:-translate-y-0.5">
+                        <i class="fa-solid fa-code-compare mr-1"></i> Comparar Fichas
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-yamahaDarkGray border-b border-yamahaRed/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="mobile-link block py-2 text-base font-semibold border-b border-gray-800">Inicio</a>
+            <a href="#dt-series" class="mobile-link block py-2 text-base font-semibold border-b border-gray-800">Serie DT (125/175/200)</a>
+            <a href="#rx-series" class="mobile-link block py-2 text-base font-semibold border-b border-gray-800">Fiebre RX (100/115/135)</a>
+            <a href="#xt660r" class="mobile-link block py-2 text-base font-semibold border-b border-gray-800">XT660R - La Bestia</a>
+            <a href="#comparator" class="mobile-link block py-2 text-base font-semibold border-b border-gray-800">Comparador Técnico</a>
+            <a href="#mitos" class="mobile-link block py-2 text-base font-semibold border-b border-gray-800">Mitos vs Realidad</a>
+            <a href="#trivia" class="mobile-link block py-2 text-base font-semibold">Trivia Biker</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Yamaha Background" 
+                 class="w-full h-full object-cover object-center filter brightness-40 contrast-125 scale-105 transform animate-pulse duration-[10000ms]"
+                 onerror="this.src='https://placehold.co/1920x1080/16161A/E60012?text=Yamaha+Legend';">
+            <div class="absolute inset-0 bg-gradient-to-t from-yamahaBlack via-yamahaBlack/70 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-yamahaBlack/90 via-transparent to-yamahaBlack/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
+            <!-- Glowing Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yamahaRed/20 border border-yamahaRed/50 text-yamahaRed font-bold text-xs uppercase tracking-widest mb-6 animate-bounce">
+                <i class="fa-solid fa-fire"></i> Tributo a las Leyendas de Colombia y LATAM
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-heading font-black text-5xl sm:text-7xl lg:text-8xl tracking-tight uppercase leading-none mb-6">
+                PASIÓN, HUMO <span class="text-yamahaRed text-glow">2T</span><br>Y PODER <span class="text-white border-b-4 border-yamahaRed">4T</span>
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-lg sm:text-2xl text-gray-300 font-light mb-10 leading-relaxed">
+                Adéntrate en la enciclopedia interactiva de las máquinas que marcaron época en las calles, carreteras y trochas: la invencible <span class="text-white font-semibold">Serie DT</span>, el legendario silbido de la <span class="text-white font-semibold">RX 115</span> y el torque demoledor de la <span class="text-white font-semibold">XT 660 R</span>.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#dt-series" class="w-full sm:w-auto bg-yamahaRed hover:bg-yamahaRedDark text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg shadow-yamahaRed/40 hover:shadow-yamahaRed/70 flex items-center justify-center gap-3 group text-base uppercase tracking-wider">
+                    <i class="fa-solid fa-motorcycle group-hover:rotate-12 transition-transform"></i> Explorar Leyendas 2T
+                </a>
+                <a href="#xt660r" class="w-full sm:w-auto bg-transparent border-2 border-white hover:border-yamahaRed hover:text-yamahaRed text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 text-base uppercase tracking-wider backdrop-blur-sm">
+                    <i class="fa-solid fa-bolt"></i> Ver La XT660R
+                </a>
+            </div>
+
+            <!-- Fast Stats Counter Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16 p-6 rounded-2xl bg-yamahaDarkGray/80 border border-white/10 backdrop-blur-md">
+                <div class="text-center p-2">
+                    <span class="block font-heading font-black text-3xl sm:text-4xl text-yamahaRed">115 cc</span>
+                    <span class="text-xs uppercase text-gray-400 font-semibold tracking-wider">Leyenda RX 115</span>
+                </div>
+                <div class="text-center p-2">
+                    <span class="block font-heading font-black text-3xl sm:text-4xl text-white">YEIS</span>
+                    <span class="text-xs uppercase text-gray-400 font-semibold tracking-wider">Tecnología DT</span>
+                </div>
+                <div class="text-center p-2">
+                    <span class="block font-heading font-black text-3xl sm:text-4xl text-yamahaRed">60 Nm</span>
+                    <span class="text-xs uppercase text-gray-400 font-semibold tracking-wider">Torque XT660R</span>
+                </div>
+                <div class="text-center p-2">
+                    <span class="block font-heading font-black text-3xl sm:text-4xl text-white">100%</span>
+                    <span class="text-xs uppercase text-gray-400 font-semibold tracking-wider">Adrenalia Biker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEDICATED SECTION 1: SERIE DT -->
+    <section id="dt-series" class="py-20 bg-yamahaDarkGray relative border-t border-b border-yamahaRed/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header section -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-yamahaRed font-bold text-sm tracking-widest uppercase">Dual-Sport Innovación</span>
+                    <h2 class="font-heading font-black text-4xl sm:text-5xl text-white mt-1">
+                        SERIE DT <span class="text-yamahaRed">"LAS REINAS DEL DESTAPE"</span>
+                    </h2>
+                    <p class="text-gray-400 max-w-2xl mt-3">
+                        Nacidas para conquistar cualquier trocha y dominar las calles. El motor 2 tiempos con el mitico sistema de suspensión trasera Monocross.
+                    </p>
+                </div>
+
+                <!-- Model Tabs Switcher -->
+                <div class="flex bg-yamahaBlack p-1.5 rounded-xl border border-white/10 mt-6 md:mt-0 self-start md:self-auto">
+                    <button onclick="switchDT('dt125')" id="tab-dt125" class="dt-tab active font-bold text-sm px-5 py-2.5 rounded-lg transition-all bg-yamahaRed text-white">DT 125</button>
+                    <button onclick="switchDT('dt175')" id="tab-dt175" class="dt-tab font-bold text-sm px-5 py-2.5 rounded-lg transition-all text-gray-400 hover:text-white">DT 175</button>
+                    <button onclick="switchDT('dt200')" id="tab-dt200" class="dt-tab font-bold text-sm px-5 py-2.5 rounded-lg transition-all text-gray-400 hover:text-white">DT 200</button>
+                </div>
+            </div>
+
+            <!-- DT Dynamic Display Card -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-yamahaBlack rounded-3xl border border-white/10 p-6 sm:p-10 shadow-2xl">
+                <!-- Image Container -->
+                <div class="lg:col-span-6 relative group overflow-hidden rounded-2xl border border-yamahaRed/30">
+                    <img id="dt-image" 
+                         src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80" 
+                         alt="Yamaha DT" 
+                         class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/16161A/E60012?text=Yamaha+DT+Series';">
+                    <div class="absolute top-4 left-4 bg-yamahaRed/90 text-white font-black text-xs px-3 py-1.5 rounded-md uppercase tracking-wider shadow">
+                        Cilindrada 2 Tiempos
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2 rounded-lg text-xs font-mono text-gray-300">
+                        <i class="fa-solid fa-droplet text-yamahaRed mr-1"></i> Autolube System
+                    </div>
+                </div>
+
+                <!-- Data & Content Container -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="border-b border-white/10 pb-4">
+                        <span id="dt-subtitle" class="text-yamahaRed font-mono font-bold text-sm">Versión DT 125 Calima / Specialized</span>
+                        <h3 id="dt-title" class="font-heading font-black text-3xl sm:text-4xl text-white mt-1">Yamaha DT 125</h3>
+                        <p id="dt-description" class="text-gray-300 text-sm sm:text-base mt-2 leading-relaxed">
+                            El ícono indiscutible de las trochas latinoamericanas. Con su característico sonido agudo y aceleración instantánea, revolucionó el mercado gracias a su caja de 6 velocidades y el tanque con diseño aerodinámico para off-road.
+                        </p>
+                    </div>
+
+                    <!-- Tech Specs Highlights -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-yamahaCard p-4 rounded-xl border border-white/5">
+                            <span class="text-xs text-gray-400 block font-semibold">Potencia Máxima</span>
+                            <span id="dt-hp" class="font-heading font-bold text-xl text-white">16.0 HP @ 7,000 RPM</span>
+                        </div>
+                        <div class="bg-yamahaCard p-4 rounded-xl border border-white/5">
+                            <span class="text-xs text-gray-400 block font-semibold">Torque Máximo</span>
+                            <span id="dt-torque" class="font-heading font-bold text-xl text-white">15.2 Nm @ 6,500 RPM</span>
+                        </div>
+                        <div class="bg-yamahaCard p-4 rounded-xl border border-white/5">
+                            <span class="text-xs text-gray-400 block font-semibold">Enfriamiento</span>
+                            <span id="dt-cooling" class="font-heading font-bold text-xl text-white">Por Aire</span>
+                        </div>
+                        <div class="bg-yamahaCard p-4 rounded-xl border border-white/5">
+                            <span class="text-xs text-gray-400 block font-semibold">Peso en Seco</span>
+                            <span id="dt-weight" class="font-heading font-bold text-xl text-white">98 kg</span>
+                        </div>
+                    </div>
+
+                    <!-- Tech Highlight Box: YEIS Technology -->
+                    <div class="p-4 rounded-xl bg-yamahaRed/10 border border-yamahaRed/30 flex items-start gap-4">
+                        <div class="text-yamahaRed text-2xl pt-1"><i class="fa-solid fa-microchip"></i></div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Tecnología Destacada: YEIS (Yamaha Energy Induction System)</h4>
+                            <p class="text-xs text-gray-300 mt-1">
+                                Una botella ressonadora conectada al colector de admisión que almacena mezcla aire-combustible extra cuando el carburador se cierra, mejorando drásticamente el torque a bajas y medias RPM.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curiosidad 2T Colombia -->
+            <div class="mt-8 bg-gradient-to-r from-yamahaRed/20 via-yamahaDarkGray to-yamahaDarkGray p-6 rounded-2xl border border-yamahaRed/40 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-16 h-16 rounded-2xl bg-yamahaRed flex items-center justify-center text-white text-3xl shrink-0 font-black shadow-lg shadow-yamahaRed/50">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                    <h4 class="font-heading font-black text-lg text-white uppercase">¿Por qué las DT son inmortales en Latinoamérica?</h4>
+                    <p class="text-gray-300 text-sm mt-1">
+                        A diferencia de otros países donde las normas de emisiones retiraron las 2 tiempos temprano, en Colombia y la región andina la DT125 y DT175 permanecieron décadas como las favoritas por su bajo costo de mantenimiento, durabilidad extrema en terrenos imposibles y la facilidad para potenciar el cilindro con lumbreras modificadas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEDICATED SECTION 2: SERIE RX -->
+    <section id="rx-series" class="py-20 bg-yamahaBlack relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-yamahaRed font-bold text-sm tracking-widest uppercase">El Sonido de las Calles</span>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white mt-1">
+                    SERIE RX <span class="text-yamahaRed">"EL SILBIDO IMPARABLE"</span>
+                </h2>
+                <p class="text-gray-400 mt-3 text-base">
+                    Ágiles, rabiosas y livianas. La familia RX convirtió el asfalto urbano en su territorio personal con una relación peso-potencia simplemente legendaria.
+                </p>
+            </div>
+
+            <!-- Audio / Sound Simulator Banner -->
+            <div class="mb-16 bg-gradient-to-r from-yamahaDarkGray via-yamahaCard to-yamahaDarkGray p-6 sm:p-8 rounded-3xl border border-yamahaRed/30 text-center relative overflow-hidden shadow-2xl">
+                <div class="relative z-10 flex flex-col items-center">
+                    <span class="text-xs font-mono uppercase tracking-widest text-yamahaRed mb-2"><i class="fa-solid fa-volume-high"></i> Simulador de Escape 2 Tiempos</span>
+                    <h3 class="font-heading font-black text-2xl sm:text-3xl text-white mb-4">ESCUCHA EL RITMO DEL "RING-DING-DING"</h3>
+                    
+                    <!-- Sound Wave visualizer bars -->
+                    <div id="sound-bars" class="flex items-center gap-2 h-12 my-4 opacity-50 transition-opacity">
+                        <div class="bar w-2 bg-yamahaRed rounded-full"></div>
+                        <div class="bar w-2 bg-white rounded-full"></div>
+                        <div class="bar w-2 bg-yamahaRed rounded-full"></div>
+                        <div class="bar w-2 bg-white rounded-full"></div>
+                        <div class="bar w-2 bg-yamahaRed rounded-full"></div>
+                        <div class="bar w-2 bg-yamahaRed rounded-full"></div>
+                    </div>
+
+                    <button id="sound-btn" onclick="toggleRXSound()" class="bg-yamahaRed hover:bg-yamahaRedDark text-white font-bold px-8 py-3 rounded-full text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg shadow-yamahaRed/40">
+                        <i class="fa-solid fa-play" id="sound-icon"></i> Simular Aceleración RX115
+                    </button>
+                    <span id="sound-text" class="text-xs text-gray-400 mt-3 italic">Haz clic para escuchar la simulación acústica del escape de expansión.</span>
+                </div>
+            </div>
+
+            <!-- RX Models Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- RX 100 -->
+                <div class="bg-yamahaDarkGray rounded-2xl border border-white/10 hover:border-yamahaRed/50 transition-all duration-300 overflow-hidden group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80" 
+                             alt="Yamaha RX 100" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/16161A/E60012?text=Yamaha+RX+100';">
+                        <div class="absolute top-3 right-3 bg-black/80 text-white font-mono text-xs px-3 py-1 rounded-full border border-white/20">
+                            Pionera 2T
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-black text-2xl text-white">RX 100</h3>
+                        <p class="text-xs text-yamahaRed font-bold uppercase tracking-wider mt-1">La cuna de la agilidad urbana</p>
+                        <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                            Reconocida por su suave transmisión de 4 velocidades y un motor indestructible de 98cc. Fue la puerta de entrada para miles de motociclistas a la cultura 2 tiempos.
+                        </p>
+                        <div class="mt-6 pt-4 border-t border-white/10 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-gray-400">Potencia:</span><span class="text-white font-bold">11.5 HP @ 7,500 RPM</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Caja:</span><span class="text-white font-bold">4 Velocidades</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Peso:</span><span class="text-white font-bold">99 kg</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RX 115 (El Rey) -->
+                <div class="bg-yamahaDarkGray rounded-2xl border-2 border-yamahaRed relative transform lg:-translate-y-4 shadow-2xl shadow-yamahaRed/20 overflow-hidden group">
+                    <div class="bg-yamahaRed text-white text-center py-1 font-black text-xs uppercase tracking-widest">
+                        ⭐ El Rey Indiscutible LATAM ⭐
+                    </div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=600&q=80" 
+                             alt="Yamaha RX 115" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/16161A/E60012?text=Yamaha+RX+115';">
+                        <div class="absolute top-3 right-3 bg-yamahaRed text-white font-bold text-xs px-3 py-1 rounded-full shadow">
+                            5 Velocidades
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-black text-2xl text-white">RX 115</h3>
+                        <p class="text-xs text-yamahaRed font-bold uppercase tracking-wider mt-1">El mito del silbido asfáltico</p>
+                        <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                            La reina de los piques y el transporte rápido en los 90 y 2000. Sus 16 caballos de fuerza impulsando apenas 94 kg de peso generaban una relación potencia/peso destructiva.
+                        </p>
+                        <div class="mt-6 pt-4 border-t border-white/10 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-gray-400">Potencia:</span><span class="text-white font-bold">16.0 HP @ 8,500 RPM</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Torque:</span><span class="text-white font-bold">13.7 Nm @ 8,000 RPM</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Vel. Máxima:</span><span class="text-white font-bold">~125-130 km/h</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RX 135 -->
+                <div class="bg-yamahaDarkGray rounded-2xl border border-white/10 hover:border-yamahaRed/50 transition-all duration-300 overflow-hidden group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" 
+                             alt="Yamaha RX 135" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/16161A/E60012?text=Yamaha+RX+135';">
+                        <div class="absolute top-3 right-3 bg-black/80 text-white font-mono text-xs px-3 py-1 rounded-full border border-white/20">
+                            Máxima Cilindrada RX
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-black text-2xl text-white">RX 135 / King</h3>
+                        <p class="text-xs text-yamahaRed font-bold uppercase tracking-wider mt-1">Músculo y torque superior</p>
+                        <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                            Desarrollada con mayor torque a bajas revoluciones y un bloque de cilindro más robusto. Popularizada en mercados asiáticos y de importación directa en Latinoamérica.
+                        </p>
+                        <div class="mt-6 pt-4 border-t border-white/10 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-gray-400">Potencia:</span><span class="text-white font-bold">14.0 - 16.5 HP</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Caja:</span><span class="text-white font-bold">5 Velocidades</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Alimentación:</span><span class="text-white font-bold">Carburador Mikuni</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEDICATED SECTION 3: XT660R -->
+    <section id="xt660r" class="py-20 bg-yamahaDarkGray relative border-t border-yamahaRed/20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Details -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-yamahaRed/20 text-yamahaRed border border-yamahaRed/40 text-xs font-bold uppercase tracking-widest">
+                        <i class="fa-solid fa-mountain"></i> Dual-Sport de Altura
+                    </div>
+                    <h2 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight uppercase leading-none">
+                        XT 660 R <br><span class="text-yamahaRed">"LA BESTIA MONOCILÍNDRICA"</span>
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Inyección electrónica, refrigeración líquida y un único pistón gigante de 660 cc capaz de empujar con la furia de un toro. La reina del turismo de aventura y los viajes de largo aliento en Suramérica.
+                    </p>
+
+                    <!-- Interactive Hotspot Stats -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-yamahaBlack border border-white/10">
+                            <i class="fa-solid fa-gauge-high text-yamahaRed text-2xl mb-2"></i>
+                            <span class="block text-2xl font-black font-heading text-white">48 HP</span>
+                            <span class="text-xs text-gray-400 font-medium">Potencia @ 6,000 RPM</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-yamahaBlack border border-white/10">
+                            <i class="fa-solid fa-gears text-yamahaRed text-2xl mb-2"></i>
+                            <span class="block text-2xl font-black font-heading text-white">60 Nm</span>
+                            <span class="text-xs text-gray-400 font-medium">Torque Brutal @ 5,250 RPM</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-yamahaBlack border border-white/10 col-span-2 sm:col-span-1">
+                            <i class="fa-solid fa-flask text-yamahaRed text-2xl mb-2"></i>
+                            <span class="block text-2xl font-black font-heading text-white">660 cc</span>
+                            <span class="text-xs text-gray-400 font-medium">SOHC 4 Válvulas</span>
+                        </div>
+                    </div>
+
+                    <!-- Highlights bullets -->
+                    <ul class="space-y-3 text-sm text-gray-300 pt-2">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-yamahaRed text-lg"></i>
+                            <span><strong>Doble Salida de Escape:</strong> El retumbar grave inconfundible al desacelerar.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-yamahaRed text-lg"></i>
+                            <span><strong>Inyección Electrónica Minarelli:</strong> Respuesta rápida en altas montañas sin apunarse.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-yamahaRed text-lg"></i>
+                            <span><strong>Chasis de Cuna de Acero:</strong> Resistencia extrema en pavimentos destruidos y trochas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Showcase Image -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto rounded-3xl overflow-hidden border-2 border-yamahaRed/40 shadow-2xl group">
+                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80" 
+                             alt="Yamaha XT660R" 
+                             class="w-full h-[450px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/800x600/16161A/E60012?text=Yamaha+XT660R';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-yamahaBlack via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-md rounded-xl border border-white/10">
+                            <span class="text-yamahaRed font-bold text-xs uppercase tracking-wider block">Mito Urbano</span>
+                            <p class="text-white text-xs mt-1 italic">
+                                "Si aceleras a fondo en segunda, el torque levanta la rueda delantera sin tocar el embrague."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOL 1: COMPARADOR DE FICHAS TÉCNICAS -->
+    <section id="comparator" class="py-20 bg-yamahaBlack relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-yamahaRed font-bold text-sm tracking-widest uppercase">Herramienta Interactiva</span>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white mt-1">
+                    COMPARADOR DE <span class="text-yamahaRed">FICHAS TÉCNICAS</span>
+                </h2>
+                <p class="text-gray-400 mt-2">
+                    Enfrenta cara a cara tus modelos favoritos para analizar cilindrada, caballos de fuerza, peso y especificaciones clave.
+                </p>
+            </div>
+
+            <!-- Comparator Selectors Bar -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
+                <div class="bg-yamahaDarkGray p-4 rounded-2xl border border-yamahaRed/30">
+                    <label class="block text-xs font-bold text-yamahaRed uppercase tracking-wider mb-2">Moto 1 (Lado Izquierdo)</label>
+                    <select id="select-moto1" onchange="updateComparison()" class="w-full bg-yamahaBlack text-white font-bold p-3 rounded-xl border border-white/20 focus:outline-none focus:border-yamahaRed">
+                        <option value="dt125">Yamaha DT 125</option>
+                        <option value="dt175">Yamaha DT 175</option>
+                        <option value="dt200">Yamaha DT 200</option>
+                        <option value="rx100">Yamaha RX 100</option>
+                        <option value="rx115" selected>Yamaha RX 115</option>
+                        <option value="rx135">Yamaha RX 135</option>
+                        <option value="xt660r">Yamaha XT 660 R</option>
+                    </select>
+                </div>
+
+                <div class="bg-yamahaDarkGray p-4 rounded-2xl border border-yamahaRed/30">
+                    <label class="block text-xs font-bold text-yamahaRed uppercase tracking-wider mb-2">Moto 2 (Lado Derecho)</label>
+                    <select id="select-moto2" onchange="updateComparison()" class="w-full bg-yamahaBlack text-white font-bold p-3 rounded-xl border border-white/20 focus:outline-none focus:border-yamahaRed">
+                        <option value="dt125">Yamaha DT 125</option>
+                        <option value="dt175" selected>Yamaha DT 175</option>
+                        <option value="dt200">Yamaha DT 200</option>
+                        <option value="rx100">Yamaha RX 100</option>
+                        <option value="rx115">Yamaha RX 115</option>
+                        <option value="rx135">Yamaha RX 135</option>
+                        <option value="xt660r">Yamaha XT 660 R</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Comparison Dynamic Table -->
+            <div class="max-w-4xl mx-auto bg-yamahaDarkGray rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+                <div class="grid grid-cols-3 bg-yamahaRed text-white font-black text-center py-4 px-2 sm:px-6 text-sm sm:text-base uppercase tracking-wider">
+                    <div id="m1-name">RX 115</div>
+                    <div class="text-yamahaBlack font-mono text-xs sm:text-sm self-center">VS</div>
+                    <div id="m2-name">DT 175</div>
+                </div>
+
+                <div class="divide-y divide-white/5 text-xs sm:text-sm">
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-engine" class="font-bold text-white">2 Tiempos / 115 cc</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Motor / Cilindrada</div>
+                        <div id="m2-engine" class="font-bold text-white">2 Tiempos / 171 cc</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-hp" class="font-bold text-yamahaRed">16.0 HP @ 8,500 RPM</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Potencia Máxima</div>
+                        <div id="m2-hp" class="font-bold text-yamahaRed">16.5 HP @ 7,000 RPM</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-torque" class="font-bold text-white">13.7 Nm @ 8,000 RPM</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Torque Máximo</div>
+                        <div id="m2-torque" class="font-bold text-white">17.0 Nm @ 6,500 RPM</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-cooling" class="text-gray-300">Por Aire</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Refrigeración</div>
+                        <div id="m2-cooling" class="text-gray-300">Por Aire</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-trans" class="text-gray-300">5 Velocidades</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Transmisión</div>
+                        <div id="m2-trans" class="text-gray-300">6 Velocidades</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-weight" class="font-mono text-white">94 kg</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Peso en Seco</div>
+                        <div id="m2-weight" class="font-mono text-white">107 kg</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 p-4 text-center items-center hover:bg-white/5 transition-colors">
+                        <div id="m1-brake" class="text-gray-300">Disco Del. / Tambor Tras.</div>
+                        <div class="text-gray-400 uppercase font-semibold text-[11px]">Frenos</div>
+                        <div id="m2-brake" class="text-gray-300">Tambor / Tambor (Orig)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MITOS VS REALIDAD (FLIP CARDS) -->
+    <section id="mitos" class="py-20 bg-yamahaDarkGray relative border-t border-yamahaRed/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-yamahaRed font-bold text-sm tracking-widest uppercase">Cultura & Sabiduría Biker</span>
+                <h2 class="font-heading font-black text-4xl sm:text-5xl text-white mt-1">
+                    MITOS VS <span class="text-yamahaRed">REALIDAD</span>
+                </h2>
+                <p class="text-gray-400 mt-2">
+                    Toca o pasa el cursor sobre cada tarjeta para voltearla y descubrir la verdad técnica detrás de los mitos de taller.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Flip Card 1 -->
+                <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <!-- Front -->
+                        <div class="flip-card-front bg-yamahaBlack border border-white/10 p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-yamahaRed text-3xl font-black"><i class="fa-solid fa-circle-question"></i></span>
+                            <div>
+                                <span class="text-xs text-yamahaRed uppercase font-bold tracking-widest block mb-2">Mito #1</span>
+                                <h3 class="font-heading font-black text-lg text-white">"¿Agregar más aceite 2T a la gasolina hace que la moto ande más?"</h3>
+                            </div>
+                            <span class="text-xs text-gray-400 italic">Toca para voltear <i class="fa-solid fa-rotate-right ml-1"></i></span>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back bg-yamahaRed text-white p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-white text-3xl font-black"><i class="fa-solid fa-circle-xmark"></i></span>
+                            <div>
+                                <span class="text-xs text-white/80 uppercase font-bold tracking-widest block mb-2">¡FALSO!</span>
+                                <p class="text-xs sm:text-sm leading-relaxed font-medium">
+                                    Añadir aceite en exceso no aumenta la potencia; empobrece la mezcla de combustible, genera carbonización prematura en la cabeza del pistón, obstruye la lumbrera de escape y crea humo denso innecesario.
+                                </p>
+                            </div>
+                            <span class="text-xs text-white/80 italic">Toca para regresar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 2 -->
+                <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <!-- Front -->
+                        <div class="flip-card-front bg-yamahaBlack border border-white/10 p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-yamahaRed text-3xl font-black"><i class="fa-solid fa-circle-question"></i></span>
+                            <div>
+                                <span class="text-xs text-yamahaRed uppercase font-bold tracking-widest block mb-2">Mito #2</span>
+                                <h3 class="font-heading font-black text-lg text-white">"¿El escape Pipeta / Chamber solo hace ruido o da potencia?"</h3>
+                            </div>
+                            <span class="text-xs text-gray-400 italic">Toca para voltear <i class="fa-solid fa-rotate-right ml-1"></i></span>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back bg-yamahaRed text-white p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-white text-3xl font-black"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <span class="text-xs text-white/80 uppercase font-bold tracking-widest block mb-2">¡REALIDAD TÉCNICA!</span>
+                                <p class="text-xs sm:text-sm leading-relaxed font-medium">
+                                    Un chamber o recámara de expansión bien calculado aprovecha la onda de resonancia de gases devueltos para "empujar" la mezcla fresca de vuelta al cilindro antes de que la lumbrera se cierre, ganando hasta un 15% de potencia.
+                                </p>
+                            </div>
+                            <span class="text-xs text-white/80 italic">Toca para regresar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 3 -->
+                <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <!-- Front -->
+                        <div class="flip-card-front bg-yamahaBlack border border-white/10 p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-yamahaRed text-3xl font-black"><i class="fa-solid fa-circle-question"></i></span>
+                            <div>
+                                <span class="text-xs text-yamahaRed uppercase font-bold tracking-widest block mb-2">Mito #3</span>
+                                <h3 class="font-heading font-black text-lg text-white">"¿La XT 660 R vibra insoportablemente en viajes largos?"</h3>
+                            </div>
+                            <span class="text-xs text-gray-400 italic">Toca para voltear <i class="fa-solid fa-rotate-right ml-1"></i></span>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back bg-yamahaRed text-white p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-white text-3xl font-black"><i class="fa-solid fa-circle-xmark"></i></span>
+                            <div>
+                                <span class="text-xs text-white/80 uppercase font-bold tracking-widest block mb-2">¡EXAGERADO!</span>
+                                <p class="text-xs sm:text-sm leading-relaxed font-medium">
+                                    Al ser un monocilíndrico de 660cc, posee el carácter único de pulsar con fuerza, pero incorpora un eje de balanceador contra-rotativo que absorbe la mayor parte de las vibraciones secundarias a velocidad de crucero.
+                                </p>
+                            </div>
+                            <span class="text-xs text-white/80 italic">Toca para regresar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 4 -->
+                <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <!-- Front -->
+                        <div class="flip-card-front bg-yamahaBlack border border-white/10 p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-yamahaRed text-3xl font-black"><i class="fa-solid fa-circle-question"></i></span>
+                            <div>
+                                <span class="text-xs text-yamahaRed uppercase font-bold tracking-widest block mb-2">Mito #4</span>
+                                <h3 class="font-heading font-black text-lg text-white">"¿El pulmón YEIS de la DT es solo un adorno de plástico?"</h3>
+                            </div>
+                            <span class="text-xs text-gray-400 italic">Toca para voltear <i class="fa-solid fa-rotate-right ml-1"></i></span>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back bg-yamahaRed text-white p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                            <span class="text-white text-3xl font-black"><i class="fa-solid fa-circle-xmark"></i></span>
+                            <div>
+                                <span class="text-xs text-white/80 uppercase font-bold tracking-widest block mb-2">¡FALSO!</span>
+                                <p class="text-xs sm:text-sm leading-relaxed font-medium">
+                                    Es una patente revolucionaria de Yamaha (Yamaha Energy Induction System) desarrollada con ingeniería acústica que suaviza la entrega de potencia y ahorra hasta un 10% de combustible en bajas RPM.
+                                </p>
+                            </div>
+                            <span class="text-xs text-white/80 italic">Toca para regresar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRIVIA BIKER INTERACTIVA -->
+    <section id="trivia" class="py-20 bg-yamahaBlack relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-yamahaDarkGray rounded-3xl border border-yamahaRed/40 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                <div class="text-center mb-8">
+                    <span class="text-yamahaRed font-bold text-xs uppercase tracking-widest"><i class="fa-solid fa-gamepad"></i> Quiz Biker Yamaha</span>
+                    <h2 class="font-heading font-black text-3xl sm:text-4xl text-white mt-1">¿QUÉ TANTO SABES DE ESTAS LEYENDAS?</h2>
+                </div>
+
+                <div id="quiz-container">
+                    <!-- Dynamic Question Area -->
+                    <div class="mb-6">
+                        <span id="quiz-number" class="text-xs font-mono text-yamahaRed font-bold block mb-1">PREGUNTA 1 DE 3</span>
+                        <h3 id="quiz-question" class="font-heading font-bold text-xl text-white">¿Qué significan las tres diapasones cruzados en el escudo oficial de Yamaha?</h3>
+                    </div>
+
+                    <!-- Dynamic Options -->
+                    <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <!-- Options generated via JS -->
+                    </div>
+
+                    <!-- Result Feedback -->
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-center font-bold text-sm mb-6"></div>
+
+                    <!-- Actions -->
+                    <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                        <span id="quiz-score" class="text-xs font-mono text-gray-400">Puntaje: 0/3</span>
+                        <button id="next-btn" onclick="nextQuestion()" class="hidden bg-yamahaRed hover:bg-yamahaRedDark text-white font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all">
+                            Siguiente Pregunta <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-yamahaBlack border-t border-white/10 py-12 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-yamahaRed rounded-full flex items-center justify-center font-black text-white text-sm">Y</div>
+                <span class="font-heading font-black text-white text-lg tracking-wider">YAMAHA <span class="text-yamahaRed">2.0</span></span>
+            </div>
+
+            <p class="text-xs text-center md:text-left text-gray-500">
+                Página tributo independiente para apasionados del motociclismo. Todas las marcas registradas pertenecen a Yamaha Motor Co., Ltd.
+            </p>
+
+            <div class="flex items-center gap-4 text-gray-400 text-lg">
+                <a href="#" class="hover:text-yamahaRed transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-yamahaRed transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-yamahaRed transition-colors"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT CODE -->
+    <script>
+        // DATA FOR DT TABS SWITCHING
+        const dtData = {
+            dt125: {
+                title: "Yamaha DT 125",
+                subtitle: "Versión DT 125 Calima / Specialized",
+                description: "El ícono indiscutible de las trochas latinoamericanas. Con su característico sonido agudo y aceleración instantánea, revolucionó el mercado gracias a su caja de 6 velocidades y el tanque con diseño aerodinámico para off-road.",
+                hp: "16.0 HP @ 7,000 RPM",
+                torque: "15.2 Nm @ 6,500 RPM",
+                cooling: "Por Aire",
+                weight: "98 kg",
+                image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80"
+            },
+            dt175: {
+                title: "Yamaha DT 175",
+                subtitle: "La Reina de la Montaña y Trocha Pesada",
+                description: "Un verdadero monstruo del torque en bajas revoluciones. Amada por su resistencia inagotable en fincas y caminos de barro difícil, la DT 175 cuenta con un cilindro de 171cc que nunca desfallece.",
+                hp: "16.5 HP @ 7,000 RPM",
+                torque: "17.0 Nm @ 6,500 RPM",
+                cooling: "Por Aire",
+                weight: "107 kg",
+                image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80"
+            },
+            dt200: {
+                title: "Yamaha DT 200 / 200R",
+                subtitle: "Máxima Evolución con Válvula YPVS y Refrigeración Líquida",
+                description: "La joya de la corona de la saga DT. Incorpora la legendaria válvula de escape YPVS y radiador de agua, entregando hasta 33 caballos de fuerza capaces de avergonzar a motos de mayor cilindraje.",
+                hp: "33.0 HP @ 8,500 RPM",
+                torque: "23.5 Nm @ 7,500 RPM",
+                cooling: "Líquida (Radiador)",
+                weight: "108 kg",
+                image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80"
+            }
+        };
+
+        function switchDT(modelKey) {
+            const data = dtData[modelKey];
+            if (!data) return;
+
+            // Update Tab styles
+            document.querySelectorAll('.dt-tab').forEach(tab => {
+                tab.classList.remove('bg-yamahaRed', 'text-white');
+                tab.classList.add('text-gray-400');
+            });
+            const activeTab = document.getElementById(`tab-${modelKey}`);
+            activeTab.classList.add('bg-yamahaRed', 'text-white');
+            activeTab.classList.remove('text-gray-400');
+
+            // Update DOM content
+            document.getElementById('dt-title').innerText = data.title;
+            document.getElementById('dt-subtitle').innerText = data.subtitle;
+            document.getElementById('dt-description').innerText = data.description;
+            document.getElementById('dt-hp').innerText = data.hp;
+            document.getElementById('dt-torque').innerText = data.torque;
+            document.getElementById('dt-cooling').innerText = data.cooling;
+            document.getElementById('dt-weight').innerText = data.weight;
+            document.getElementById('dt-image').src = data.image;
+        }
+
+        // DATA FOR TECH COMPARATOR TOOL
+        const motoSpecs = {
+            dt125: { name: "Yamaha DT 125", engine: "2 Tiempos / 123 cc", hp: "16.0 HP @ 7,000 RPM", torque: "15.2 Nm @ 6,500 RPM", cooling: "Por Aire", trans: "6 Velocidades", weight: "98 kg", brake: "Disco Del. / Tambor Tras." },
+            dt175: { name: "Yamaha DT 175", engine: "2 Tiempos / 171 cc", hp: "16.5 HP @ 7,000 RPM", torque: "17.0 Nm @ 6,500 RPM", cooling: "Por Aire", trans: "6 Velocidades", weight: "107 kg", brake: "Tambor / Tambor (Orig)" },
+            dt200: { name: "Yamaha DT 200R", engine: "2 Tiempos / 195 cc", hp: "33.0 HP @ 8,500 RPM", torque: "23.5 Nm @ 7,500 RPM", cooling: "Refrigeración Líquida", trans: "6 Velocidades", weight: "108 kg", brake: "Disco Del. / Disco Tras." },
+            rx100: { name: "Yamaha RX 100", engine: "2 Tiempos / 98 cc", hp: "11.5 HP @ 7,500 RPM", torque: "10.3 Nm @ 7,000 RPM", cooling: "Por Aire", trans: "4 Velocidades", weight: "99 kg", brake: "Tambor / Tambor" },
+            rx115: { name: "Yamaha RX 115", engine: "2 Tiempos / 115 cc", hp: "16.0 HP @ 8,500 RPM", torque: "13.7 Nm @ 8,000 RPM", cooling: "Por Aire", trans: "5 Velocidades", weight: "94 kg", brake: "Disco Del. / Tambor Tras." },
+            rx135: { name: "Yamaha RX 135", engine: "2 Tiempos / 132 cc", hp: "14.0 - 16.5 HP", torque: "13.2 Nm @ 6,500 RPM", cooling: "Por Aire", trans: "5 Velocidades", weight: "116 kg", brake: "Tambor / Tambor" },
+            xt660r: { name: "Yamaha XT 660 R", engine: "4 Tiempos Inyección / 660 cc", hp: "48.0 HP @ 6,000 RPM", torque: "60.0 Nm @ 5,250 RPM", cooling: "Refrigeración Líquida", trans: "5 Velocidades", weight: "172 kg", brake: "Disco Del. 298mm / Disco Tras." }
+        };
+
+        function updateComparison() {
+            const m1Key = document.getElementById('select-moto1').value;
+            const m2Key = document.getElementById('select-moto2').value;
+
+            const m1 = motoSpecs[m1Key];
+            const m2 = motoSpecs[m2Key];
+
+            // Render Left Side
+            document.getElementById('m1-name').innerText = m1.name;
+            document.getElementById('m1-engine').innerText = m1.engine;
+            document.getElementById('m1-hp').innerText = m1.hp;
+            document.getElementById('m1-torque').innerText = m1.torque;
+            document.getElementById('m1-cooling').innerText = m1.cooling;
+            document.getElementById('m1-trans').innerText = m1.trans;
+            document.getElementById('m1-weight').innerText = m1.weight;
+            document.getElementById('m1-brake').innerText = m1.brake;
+
+            // Render Right Side
+            document.getElementById('m2-name').innerText = m2.name;
+            document.getElementById('m2-engine').innerText = m2.engine;
+            document.getElementById('m2-hp').innerText = m2.hp;
+            document.getElementById('m2-torque').innerText = m2.torque;
+            document.getElementById('m2-cooling').innerText = m2.cooling;
+            document.getElementById('m2-trans').innerText = m2.trans;
+            document.getElementById('m2-weight').innerText = m2.weight;
+            document.getElementById('m2-brake').innerText = m2.brake;
+        }
+
+        // RX SOUND SIMULATOR LOGIC
+        let isPlayingSound = false;
+        let audioContext = null;
+
+        function toggleRXSound() {
+            const soundBars = document.getElementById('sound-bars');
+            const soundBtn = document.getElementById('sound-btn');
+            const soundIcon = document.getElementById('sound-icon');
+            const soundText = document.getElementById('sound-text');
+
+            if (!isPlayingSound) {
+                isPlayingSound = true;
+                soundBars.classList.remove('opacity-50');
+                soundBars.classList.add('opacity-100');
+                soundBtn.classList.replace('bg-yamahaRed', 'bg-white');
+                soundBtn.classList.replace('text-white', 'text-yamahaBlack');
+                soundIcon.classList.replace('fa-play', 'fa-stop');
+                soundText.innerText = "¡Simulación activa! Repicando motor 2 tiempos con escape de expansión...";
+
+                // Synthesize audio using Web Audio API
+                try {
+                    if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    play2ToneSound();
+                } catch(e) {
+                    console.log("Audio Context not allowed or supported");
+                }
+            } else {
+                isPlayingSound = false;
+                soundBars.classList.add('opacity-50');
+                soundBars.classList.remove('opacity-100');
+                soundBtn.classList.replace('bg-white', 'bg-yamahaRed');
+                soundBtn.classList.replace('text-yamahaBlack', 'text-white');
+                soundIcon.classList.replace('fa-stop', 'fa-play');
+                soundText.innerText = "Haz clic para escuchar la simulación acústica del escape de expansión.";
+            }
+        }
+
+        function play2ToneSound() {
+            if (!isPlayingSound || !audioContext) return;
+
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+
+            osc.type = 'sawtooth'; // Aggressive 2T rasp sound
+            
+            // Random rapid frequency shifts simulating throttle revving
+            const now = audioContext.currentTime;
+            osc.frequency.setValueAtTime(120, now); // Idle sound
+            osc.frequency.exponentialRampToValueAtTime(380, now + 0.4); // Rev up
+            osc.frequency.exponentialRampToValueAtTime(150, now + 0.9); // Rev down
+
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 1.1);
+
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+
+            osc.start(now);
+            osc.stop(now + 1.1);
+
+            setTimeout(() => {
+                if (isPlayingSound) play2ToneSound();
+            }, 1200);
+        }
+
+        // TRIVIA QUIZ GAME LOGIC
+        const quizQuestions = [
+            {
+                question: "¿Qué representan los tres diapasones cruzados del logotipo oficial de Yamaha?",
+                options: [
+                    "Tres ruedas de motocicleta",
+                    "La unión de fabricación, ventas y tecnología (Origen musical)",
+                    "Tres tipos de motores: 2T, 4T y Marinos",
+                    "Las tres victorias consecutivas en el Rally Dakar"
+                ],
+                correct: 1
+            },
+            {
+                question: "¿Qué significan las siglas de la tecnología YEIS presente en las míticas DT?",
+                options: [
+                    "Yamaha Exhaust Injection System",
+                    "Yamaha Energy Induction System",
+                    "Yamaha Electronic Ignition Sensor",
+                    "Yamaha Eco Power System"
+                ],
+                correct: 1
+            },
+            {
+                question: "¿Cuál es la principal ventaja técnica de la RX 115 frente a otras motos de su época?",
+                options: [
+                    "Su inyección electrónica de combustible",
+                    "Su relación potencia-peso descomunal (16 HP para 94 kg)",
+                    "Transmisión de 7 velocidades",
+                    "Frenos ABS hidráulicos"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('quiz-number').innerText = `PREGUNTA ${currentQuestion + 1} DE ${quizQuestions.length}`;
+            document.getElementById('quiz-question').innerText = q.question;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-yamahaBlack border border-white/10 hover:border-yamahaRed p-4 rounded-xl text-xs sm:text-sm text-gray-200 transition-all font-medium flex items-center gap-3";
+                btn.innerHTML = `<span class="w-6 h-6 rounded-full bg-yamahaCard flex items-center justify-center font-mono text-xs font-bold text-yamahaRed">${String.fromCharCode(65 + index)}</span> ${opt}`;
+                btn.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selectedIndex) {
+            const q = quizQuestions[currentQuestion];
+            const feedback = document.getElementById('quiz-feedback');
+            const options = document.getElementById('quiz-options').children;
+
+            // Disable all options
+            for (let btn of options) {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+
+            if (selectedIndex === q.correct) {
+                score++;
+                feedback.className = "p-4 rounded-xl text-center font-bold text-sm mb-6 bg-emerald-900/50 text-emerald-300 border border-emerald-500/30";
+                feedback.innerText = "¡CORRECTO! Conoces la historia pura de la marca.";
+            } else {
+                feedback.className = "p-4 rounded-xl text-center font-bold text-sm mb-6 bg-yamahaRed/20 text-yamahaRed border border-yamahaRed/40";
+                feedback.innerText = `INCORRECTO. La respuesta correcta era: ${q.options[q.correct]}`;
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('quiz-score').innerText = `Puntaje: ${score}/${quizQuestions.length}`;
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                // Quiz completed
+                document.getElementById('quiz-container').innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fa-solid fa-trophy text-5xl text-yamahaRed mb-4 animate-bounce"></i>
+                        <h3 class="font-heading font-black text-3xl text-white">¡QUIZ COMPLETADO!</h3>
+                        <p class="text-gray-300 text-base mt-2">Obtuviste <span class="text-yamahaRed font-bold">${score}</span> de ${quizQuestions.length} respuestas correctas.</p>
+                        <p class="text-xs text-gray-400 mt-1">${score === 3 ? "¡Eres un maestro consagrado de la Fiebre 2T y 4T!" : "Aún puedes repasar las fichas y volver a intentarlo."}</p>
+                        <button onclick="restartQuiz()" class="mt-6 bg-yamahaRed hover:bg-yamahaRedDark text-white font-bold px-8 py-3 rounded-full text-xs uppercase tracking-wider transition-all">
+                            Volver a Intentar
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            location.reload(); // Quick reset
+        }
+
+        // MOBILE MENU TOGGLE
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            } else {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // INITIALIZE ON LOAD
+        window.onload = function() {
+            loadQuestion();
+            updateComparison();
+        }
+    </script>
+</body>
+</html>
+```
